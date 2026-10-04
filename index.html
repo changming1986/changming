@@ -49,7 +49,7 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
 .btn.ghost{border-color:rgba(126,220,255,.52);color:var(--cyan);font-size:17px;
   background:linear-gradient(180deg,rgba(126,220,255,.085),rgba(126,220,255,.02));box-shadow:none}
 .meta{margin-top:24px;font-size:11.8px;color:#8a90a8;letter-spacing:.07em}
-.foot{margin-top:11px;font-family:ui-monospace,Menlo,monospace;font-size:10.5px;
+.foot{margin-top:96px;font-family:ui-monospace,Menlo,monospace;font-size:10.5px;
   color:#565c72;letter-spacing:.15em}
 @media(min-width:920px){
   .wrap{padding:46px 40px 32px}
@@ -118,6 +118,12 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
 .qun:hover{border-color:rgba(255,212,88,.42);color:#aab1c7}
 .qun b{color:rgba(255,212,88,.88);font-weight:600;letter-spacing:.09em}
 .qun .cp{font-size:10px;opacity:.5;border-left:1px solid rgba(255,255,255,.14);padding-left:7px}
+/* 首屏那个群号：页脚的是"回执"，首屏的是"邀请"，所以给它一层淡淡的金框。
+   位置很关键——群号以前埋在页脚，要滚 5000 多像素才看得到，等于没有。 */
+.qun-top{margin-top:18px;padding:9px 16px;border-radius:999px;
+  border:1px solid rgba(255,212,88,.26);background:rgba(255,212,88,.055)}
+.qun-top b{color:#ffd458}
+.qun-top:hover{border-color:rgba(255,212,88,.5)}
 #qtip{position:fixed;left:50%;bottom:calc(74px + env(safe-area-inset-bottom));
   transform:translate(-50%,150%);padding:9px 15px;border-radius:10px;z-index:96;
   border:1px solid rgba(126,220,255,.4);background:rgba(10,12,28,.94);
@@ -127,11 +133,15 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
 #qtip.on{transform:translate(-50%,0);opacity:1;visibility:visible}
 
 /* ===== （v6.7 官网教程版）新增区块：视频教程 / 五条路 / 数据 / 三件事 ===== */
-.tp{padding:54px 26px;border-top:1px solid #14162c;max-width:620px;margin:0 auto}
-.tp-eye{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.4em;color:#8a6f3a}
-.tp-h2{font-size:23px;font-weight:800;letter-spacing:.04em;color:#f0ead9;margin-top:13px}
-.tp-sub{margin-top:11px;font-size:13px;line-height:1.9;color:#8b86a8}
-.tp-video{margin-top:22px;border-radius:14px;overflow:hidden;border:1px solid #242a52;
+/* 区块不再用分割线切开（6 条线 = 6 个格子，读起来像清单）。
+   改用留白分组：区块之间 92px，区块内标题到内容 22px，卡片内 10px。
+   比例约 9:2:1，人眼一看就知道哪几句是一组。 */
+.tp{padding:92px 34px 8px;max-width:640px;margin:0 auto;text-align:center}
+.tp:first-of-type{padding-top:64px}
+.tp-eye{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.44em;color:#8a6f3a}
+.tp-h2{font-size:25px;font-weight:800;letter-spacing:.04em;color:#f0ead9;margin-top:15px}
+.tp-sub{margin-top:14px;font-size:13.5px;line-height:1.95;color:#8b86a8;max-width:430px;margin-left:auto;margin-right:auto}
+.tp-video{margin-top:30px;border-radius:14px;overflow:hidden;border:1px solid #242a52;
  background:#0a0b1c;box-shadow:0 14px 44px rgba(0,0,0,.5);position:relative}
 .tp-video video{display:block;width:100%;max-height:70vh;object-fit:contain;background:#08090f}
 .tp-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
@@ -149,7 +159,7 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
  display:flex;align-items:center;justify-content:center}
 .tp-step .tp-sh{display:block;font-size:12.5px;color:#f0e9d6;font-weight:600;margin-bottom:4px}
 .tp-step .tp-s{display:block;font-size:11.5px;line-height:1.62;color:#918dae}
-.tp-tl{position:relative;margin-top:30px;padding-left:29px}
+.tp-tl{position:relative;margin-top:34px;padding-left:29px;text-align:left}
 .tp-tl:before{content:"";position:absolute;left:6px;top:10px;bottom:26px;width:1px;
  background:linear-gradient(#2a2210,#c9a25e 12%,#c9a25e 88%,#2a2210)}
 .tp-st{position:relative;padding-bottom:32px}
@@ -166,11 +176,11 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
 .tp-opt .cost{font-size:10.5px;line-height:1.6;color:#7f7a9c;margin-top:7px;padding-top:7px;border-top:1px dashed #23274a}
 .tp-lock{margin-top:11px;font-size:10.5px;color:#8a6f3a}
 .tp-first{margin-top:13px;font-size:12px;color:#7f7a9c;background:#0d1024;border:1px solid #1b1e3c;border-radius:11px;padding:13px}
-.tp-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:22px}
+.tp-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:30px}
 .tp-stat{background:#0d0f24;border:1px solid #1b1e3c;border-radius:12px;padding:15px 14px}
 .tp-stat b{display:block;font-size:25px;color:#f3c469;font-weight:800}
 .tp-stat span{font-size:11px;color:#7d78a0;display:block;margin-top:3px}
-.tp-cards{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.tp-cards{display:flex;flex-direction:column;gap:12px;margin-top:30px;text-align:left}
 .tp-card{background:linear-gradient(180deg,#0e1027,#0b0d1e);border:1px solid #1c1f3d;border-radius:14px;padding:17px 18px}
 .tp-card h4{font-size:15px;color:#eee7d6;margin-bottom:8px}
 .tp-card p{font-size:12px;line-height:1.9;color:#807ba0}
@@ -233,29 +243,19 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
     <a class="btn ghost" href="changming.apk" download>下载安卓版 APK<span class="en">DOWNLOAD · ANDROID</span></a>
   </div>
   <div class="meta">单机 · 无内购 · 无广告 · 断网可玩 · 仅 1.7MB</div>
+  <div class="qun qun-top" onclick="copyQun()" role="button" tabindex="0">
+    <span>玩家交流群</span><b>1125791544</b><span class="cp">复制</span></div>
 <section class="tp">
-  <div class="tp-eye">TUTORIAL</div>
-  <div class="tp-h2">一分钟，学会怎么活</div>
-  <div class="tp-sub">四件小事：派人、养人、进代、传手艺。看完这 68 秒，够你活过第一个一百年。</div>
-  <div class="tp-video">
-    <video id="tpVideo" controls playsinline preload="none" poster="https://www.changming1986.com/tut-poster.jpg">
-      <source src="https://www.changming1986.com/tutorial.mp4" type="video/mp4">
-    </video>
-    <div class="tp-play" id="tpPlay"><i></i></div>
+  <div class="tp-eye">FIRE KEEPERS</div>
+  <div class="tp-h2">传火者名录</div>
+  <div class="tp-sub">最早的一批玩家。他们来的时候，火种只有一粒。</div>
+  <div class="fk-wrap">
+    <div class="fk-count">目前 <b>1</b> 位</div>
+    <div class="fk-list">
+      <span class="fk-n">蒲公英的约定</span>
+    </div>
+    <div class="fk-foot">按加入顺序 · 长期保留 · 想留名？去群里拿编号</div>
   </div>
-  <div class="tp-steps">
-    <div class="tp-step"><span class="tp-n">1</span><span class="tp-sh">怎么调人干活</span><span class="tp-s">发展页就是你的指挥台。想让谁去干活，点他旁边那个 ＋，人就过去了。</span></div>
-    <div class="tp-step"><span class="tp-n">2</span><span class="tp-sh">人口为什么不涨</span><span class="tp-s">点顶栏的人数：出生多少、减员多少都记着。住房满、粮食不够，人就生不动。</span></div>
-    <div class="tp-step"><span class="tp-n">3</span><span class="tp-sh">怎么进下一个时代</span><span class="tp-s">攒够知识，顶栏亮起「可进代」，发展页冒出一条金色横条——点它。</span></div>
-    <div class="tp-step"><span class="tp-n">4</span><span class="tp-sh">族人与师承</span><span class="tp-s">提拔让手艺长在人身上。干久了生手变宗师，可一转岗就清零；带徒弟才传得下去。</span></div>
-  </div>
-</section>
-
-<section class="tp">
-  <div class="tp-eye">FIVE FORKS</div>
-  <div class="tp-h2">五条路，只能选一半</div>
-  <div class="tp-sub">每进一个时代，你必须二选一。选了这条，另一条这一局不再出现——<br>这就是为什么两个存档会长得完全不一样。</div>
-  <div class="tp-tl"><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA I &nbsp;·&nbsp; 约 3000 年前</div><h3>🌾 石器时代</h3><p>一切从这里开始</p><div class="tp-first">一颗火星落到地上。第一批族人，还没有名字。</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA II &nbsp;·&nbsp; 怎么活下去</div><h3>🌾 农耕时代</h3><p>圈起田地，还是骑上马走</p><div class="tp-duo"><div class="tp-opt"><div class="ic">🌾</div><b>定居</b><div class="win">农田 +25% · 仓储腐损减半</div><div class="cost">代价：探索收益 −15%</div></div><div class="tp-opt"><div class="ic">🐎</div><b>游牧</b><div class="win">畜牧 +40% · 探索 +50%<br>无岗野外劳作翻倍</div><div class="cost">代价：仓储 −15%</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA III &nbsp;·&nbsp; 怎么立国</div><h3>🏛️ 城邦时代</h3><p>城墙之内，先做买卖还是先练刀</p><div class="tp-duo"><div class="tp-opt"><div class="ic">🏛️</div><b>城邦</b><div class="win">贸易额度 ×2 · 好感 +15 · 知识 +12%</div><div class="cost">代价：军力 −10% · 被袭损失 +15%</div></div><div class="tp-opt"><div class="ic">⚔️</div><b>军镇</b><div class="win">军队上限 +15% · 讨赔 ×1.5 · 威慑 ×1.3</div><div class="cost">代价：贸易 −30% · 好感 −10</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA IV &nbsp;·&nbsp; 先要什么</div><h3>⚙️ 工业时代</h3><p>烟囱升起，先炼铁还是先办学</p><div class="tp-duo"><div class="tp-opt"><div class="ic">⚙️</div><b>重工</b><div class="win">铜铁 +45% · 建造费 −15%</div><div class="cost">代价：民意 −2 / 年</div></div><div class="tp-opt"><div class="ic">📜</div><b>文教</b><div class="win">知识 +30% · 研习加速 20%</div><div class="cost">代价：铜铁 −25% · 军备 +20%</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA V &nbsp;·&nbsp; 能量从哪来</div><h3>🔌 电气时代</h3><p>灯亮起来，机器吞粮食还是让土地喘口气</p><div class="tp-duo"><div class="tp-opt"><div class="ic">🔌</div><b>电网</b><div class="win">发电 +60% · 全区产能 +15%</div><div class="cost">代价：粮耗 +12% · 断电更惨</div></div><div class="tp-opt"><div class="ic">🌳</div><b>生态</b><div class="win">农田 +35% · 民意 +2 / 年</div><div class="cost">代价：产能 −8% · 发电 −20%</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA VI &nbsp;·&nbsp; 怎么上天</div><h3>🚀 星辰时代</h3><p>船已经造好。走，还是留</p><div class="tp-duo"><div class="tp-opt"><div class="ic">🚀</div><b>远征</b><div class="win">飞船 ×1.5 速 · 星晶 +50%</div><div class="cost">代价：飞船劳民 ×1.6（民意 −6.4 / 年）</div></div><div class="tp-opt"><div class="ic">🏡</div><b>守成</b><div class="win">民意 +15 · 飞船劳民减半</div><div class="cost">代价：飞船 −25% 速 · 知识 −8%</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div></div>
 </section>
 
 <section class="tp">
@@ -280,17 +280,32 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
 </section>
 
 <section class="tp">
-  <div class="tp-eye">FIRE KEEPERS</div>
-  <div class="tp-h2">传火者名录</div>
-  <div class="tp-sub">最早的一批玩家。他们来的时候，火种只有一粒。</div>
-  <div class="fk-wrap">
-    <div class="fk-count">目前 <b>1</b> 位</div>
-    <div class="fk-list">
-      <span class="fk-n">蒲公英的约定</span>
-    </div>
-    <div class="fk-foot">按加入顺序 · 长期保留 · 想留名？去群里拿编号</div>
+  <div class="tp-eye">FIVE FORKS</div>
+  <div class="tp-h2">五条路，只能选一半</div>
+  <div class="tp-sub">每进一个时代，你必须二选一。选了这条，另一条这一局不再出现——<br>这就是为什么两个存档会长得完全不一样。</div>
+  <div class="tp-tl"><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA I &nbsp;·&nbsp; 约 3000 年前</div><h3>🌾 石器时代</h3><p>一切从这里开始</p><div class="tp-first">一颗火星落到地上。第一批族人，还没有名字。</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA II &nbsp;·&nbsp; 怎么活下去</div><h3>🌾 农耕时代</h3><p>圈起田地，还是骑上马走</p><div class="tp-duo"><div class="tp-opt"><div class="ic">🌾</div><b>定居</b><div class="win">农田 +25% · 仓储腐损减半</div><div class="cost">代价：探索收益 −15%</div></div><div class="tp-opt"><div class="ic">🐎</div><b>游牧</b><div class="win">畜牧 +40% · 探索 +50%<br>无岗野外劳作翻倍</div><div class="cost">代价：仓储 −15%</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA III &nbsp;·&nbsp; 怎么立国</div><h3>🏛️ 城邦时代</h3><p>城墙之内，先做买卖还是先练刀</p><div class="tp-duo"><div class="tp-opt"><div class="ic">🏛️</div><b>城邦</b><div class="win">贸易额度 ×2 · 好感 +15 · 知识 +12%</div><div class="cost">代价：军力 −10% · 被袭损失 +15%</div></div><div class="tp-opt"><div class="ic">⚔️</div><b>军镇</b><div class="win">军队上限 +15% · 讨赔 ×1.5 · 威慑 ×1.3</div><div class="cost">代价：贸易 −30% · 好感 −10</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA IV &nbsp;·&nbsp; 先要什么</div><h3>⚙️ 工业时代</h3><p>烟囱升起，先炼铁还是先办学</p><div class="tp-duo"><div class="tp-opt"><div class="ic">⚙️</div><b>重工</b><div class="win">铜铁 +45% · 建造费 −15%</div><div class="cost">代价：民意 −2 / 年</div></div><div class="tp-opt"><div class="ic">📜</div><b>文教</b><div class="win">知识 +30% · 研习加速 20%</div><div class="cost">代价：铜铁 −25% · 军备 +20%</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA V &nbsp;·&nbsp; 能量从哪来</div><h3>🔌 电气时代</h3><p>灯亮起来，机器吞粮食还是让土地喘口气</p><div class="tp-duo"><div class="tp-opt"><div class="ic">🔌</div><b>电网</b><div class="win">发电 +60% · 全区产能 +15%</div><div class="cost">代价：粮耗 +12% · 断电更惨</div></div><div class="tp-opt"><div class="ic">🌳</div><b>生态</b><div class="win">农田 +35% · 民意 +2 / 年</div><div class="cost">代价：产能 −8% · 发电 −20%</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div><div class="tp-st"><div class="tp-node"></div><div class="tp-era">ERA VI &nbsp;·&nbsp; 怎么上天</div><h3>🚀 星辰时代</h3><p>船已经造好。走，还是留</p><div class="tp-duo"><div class="tp-opt"><div class="ic">🚀</div><b>远征</b><div class="win">飞船 ×1.5 速 · 星晶 +50%</div><div class="cost">代价：飞船劳民 ×1.6（民意 −6.4 / 年）</div></div><div class="tp-opt"><div class="ic">🏡</div><b>守成</b><div class="win">民意 +15 · 飞船劳民减半</div><div class="cost">代价：飞船 −25% 速 · 知识 −8%</div></div></div><div class="tp-lock">选了这条，另一条这一局不再出现</div></div></div>
+</section>
+
+<section class="tp">
+  <div class="tp-eye">TUTORIAL</div>
+  <div class="tp-h2">一分钟，学会怎么活</div>
+  <div class="tp-sub">四件小事：派人、养人、进代、传手艺。看完这 68 秒，够你活过第一个一百年。</div>
+  <div class="tp-video">
+    <video id="tpVideo" controls playsinline preload="none" poster="https://www.changming1986.com/tut-poster.jpg">
+      <source src="https://www.changming1986.com/tutorial.mp4" type="video/mp4">
+    </video>
+    <div class="tp-play" id="tpPlay"><i></i></div>
+  </div>
+  <div class="tp-steps">
+    <div class="tp-step"><span class="tp-n">1</span><span class="tp-sh">怎么调人干活</span><span class="tp-s">发展页就是你的指挥台。想让谁去干活，点他旁边那个 ＋，人就过去了。</span></div>
+    <div class="tp-step"><span class="tp-n">2</span><span class="tp-sh">人口为什么不涨</span><span class="tp-s">点顶栏的人数：出生多少、减员多少都记着。住房满、粮食不够，人就生不动。</span></div>
+    <div class="tp-step"><span class="tp-n">3</span><span class="tp-sh">怎么进下一个时代</span><span class="tp-s">攒够知识，顶栏亮起「可进代」，发展页冒出一条金色横条——点它。</span></div>
+    <div class="tp-step"><span class="tp-n">4</span><span class="tp-sh">族人与师承</span><span class="tp-s">提拔让手艺长在人身上。干久了生手变宗师，可一转岗就清零；带徒弟才传得下去。</span></div>
   </div>
 </section>
+
+
+
 
   <div class="foot">A CIVILIZATION FROM A SINGLE SPARK</div>
   <div class="qun" onclick="copyQun()" role="button" tabindex="0">
