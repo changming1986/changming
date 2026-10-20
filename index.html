@@ -393,6 +393,25 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
     <span>玩家交流群</span><b>1125791544</b><span class="cp">复制</span></div>
 </main>
 
+<script>
+/* ★（2026-10-20）空闲时预取游戏本体。点「开始游戏」现在要现下 2.6MB，手机 4G 上
+   就是那一两秒的白屏。首页加载完、静置 1.5 秒后悄悄预取，点下去直接命中缓存。
+   省流量模式（saveData）或 2G 网络不预取 —— 不能替人花流量。 */
+window.addEventListener("load", function(){
+  setTimeout(function(){
+    try{
+      var c = navigator.connection || {};
+      if(c.saveData){ return; }
+      if(c.effectiveType && /(^|-)2g$/.test(c.effectiveType)){ return; }
+      if(document.querySelector('link[data-pf="game"]')){ return; }
+      var l = document.createElement("link");
+      l.rel = "prefetch"; l.as = "document"; l.href = "spark-civ.html";
+      l.setAttribute("data-pf", "game");
+      document.head.appendChild(l);
+    }catch(e){}
+  }, 1500);
+});
+</script>
 <div id="stage"><iframe id="game" title="长明"></iframe></div>
 <div id="load"><div class="spark"></div><div>正在点燃火种…</div></div>
 <div id="updbar"><span class="udot"></span><span>发现新版本</span><button id="updGo">刷新</button><button id="updX">✕</button></div>
