@@ -91,6 +91,10 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
   .hero-txt .rule{margin-left:0}
   .hero-txt .btns{max-width:384px}
   .hero-txt h1 img.t{width:288px}
+  /* 交流群/反馈行也跟着左栏走：1440 宽时正好落在 hero 左边缘 x=180
+     （.wrap 左内边距 40 + max(0, 50vw-580) = 180） */
+  .wrap > .qun, .wrap > .fb{align-self:flex-start;text-align:left;
+        margin-left:max(0px,calc(50vw - 580px))}
 }
 @media(max-width:919px){
   .logo{width:116px;height:116px;border-radius:27px}
