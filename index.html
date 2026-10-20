@@ -91,6 +91,10 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
   .hero-txt .rule{margin-left:0}
   .hero-txt .btns{max-width:384px}
   .hero-txt h1 img.t{width:288px}
+  /* 标题图左右各带 151/148px 的透明留白（620 宽画布），左对齐时字墨迹会
+     往右缩 70px，看着跟 logo 没对在一起 —— 拉回来，让"长明"的笔画左缘
+     和 logo 左缘同一条竖线。70 = 151 × (288/620)。 */
+  .hero-txt h1{margin-left:-70px}
   /* 交流群/反馈行也跟着左栏走：1440 宽时正好落在 hero 左边缘 x=180
      （.wrap 左内边距 40 + max(0, 50vw-580) = 180） */
   .wrap > .qun, .wrap > .fb{align-self:flex-start;text-align:left;
