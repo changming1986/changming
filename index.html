@@ -25,6 +25,8 @@ body{background:#07081a;color:#e9e9ef;overflow-x:hidden;
   background:linear-gradient(180deg,transparent 30%,rgba(255,140,50,.055) 72%,transparent 100%)}
 .wrap{position:relative;z-index:1;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;padding:56px 26px 30px}
+.hero{width:100%;display:flex;flex-direction:column;align-items:center}
+.hero-txt{width:100%;display:flex;flex-direction:column;align-items:center}
 .logo{width:126px;height:126px;border-radius:29px;display:block;
   box-shadow:0 0 62px -8px rgba(255,150,60,.62)}
 h1{margin:22px 0 0;line-height:0}
@@ -78,6 +80,17 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
   .btn.ghost{font-size:17px}
   .meta{margin-top:30px;font-size:12px}
   .foot{margin-top:11px}
+  /* （2026-10-20）桌面分栏：左边文案+按钮，右边实机画面。
+     为什么做：三天日志里 Windows 99 / Mac 52 / iPhone 31 / Android 21，
+     桌面占了四分之三，而这页在宽屏上只有中间 390px 一竖条，像是"不是给你玩的"。 */
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) 348px;gap:56px;
+        align-items:start;text-align:left;max-width:1080px;margin:0 auto}
+  .hero-txt{grid-column:1;grid-row:1;align-items:flex-start;text-align:left}
+  .hero > .shot{grid-column:2;grid-row:1 / span 2;margin:6px 0 0}
+  .hero > .meta{grid-column:1;grid-row:2}
+  .hero-txt .rule{margin-left:0}
+  .hero-txt .btns{max-width:384px}
+  .hero-txt h1 img.t{width:288px}
 }
 @media(max-width:919px){
   .logo{width:116px;height:116px;border-radius:27px}
@@ -256,6 +269,8 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
 <div class="horizon"></div>
 
 <main class="wrap">
+<div class="hero">
+<div class="hero-txt">
   <img class="logo" src="data:image/png;base64,__LOGO__" alt="长明" width="120" height="120">
   <h1><img class="t" src="data:image/png;base64,__TITLE__" alt="长明" width="312"></h1>
   <div class="sub">LONG MING · THE FIREBORN</div>
@@ -267,11 +282,13 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
     <button class="btn" onclick="play()">开 始 游 戏<span class="en">PLAY IN BROWSER</span></button>
     <a class="btn ghost sm" href="changming.apk?v=__APKVER__" download>下载安卓版 APK<span class="en">DOWNLOAD · ANDROID</span></a>
   </div>
+</div>
   <figure class="shot">
     <img src="data:image/webp;base64,__SHOT__" alt="长明：一局里你会读到这样的抉择" width="340" height="735">
     <figcaption>一局里你要读很多段这样的话，然后做决定</figcaption>
   </figure>
   <div class="meta">单机 · 无内购 · 无广告 · 断网可玩 · 仅 1.7MB · <b style="color:#c9973f">适龄 12+</b></div>
+</div>
   <div class="qun qun-top" onclick="copyQun()" role="button" tabindex="0">
     <span>玩家交流群</span><b>1125791544</b><span class="cp">复制</span></div>
   <div class="fb">
