@@ -58,7 +58,10 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
 .shot figcaption{ margin-top:9px; font-size:12.5px; color:#8b92a8; letter-spacing:.3px; }
 .btn.ghost{border-color:rgba(126,220,255,.52);color:var(--cyan);font-size:17px;
   background:linear-gradient(180deg,rgba(126,220,255,.085),rgba(126,220,255,.02));box-shadow:none}
-.meta{margin-top:24px;font-size:11.8px;color:#8a90a8;letter-spacing:.07em}
+.meta{margin-top:24px;display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.meta span{padding:5px 11px;border:1px solid rgba(255,255,255,.09);border-radius:999px;
+  font-size:11.5px;letter-spacing:.05em;color:#8f95ab;white-space:nowrap}
+.meta span.age{color:#c9973f;border-color:rgba(201,151,63,.34)}
 .foot{margin-top:96px;font-family:ui-monospace,Menlo,monospace;font-size:10.5px;
   color:#565c72;letter-spacing:.15em}
 /* （2026-10-09）隐私政策入口：以前这页只在 OSS 上躺着，官网和游戏里都没有链接，
@@ -67,15 +70,15 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
 .foot-links a{color:#7c7360;text-decoration:none;border-bottom:1px dotted rgba(201,151,63,.4)}
 .foot-links a:hover{color:#c9973f;border-bottom-color:rgba(201,151,63,.75)}
 @media(min-width:920px){
-  .wrap{padding:46px 40px 32px}
-  .logo{width:132px;height:132px;border-radius:30px}
-  h1{margin-top:24px}
+  .wrap{padding:28px 40px 24px}
+  .logo{width:124px;height:124px;border-radius:28px}
+  h1{margin-top:18px}
   h1 img.t{width:254px}
   .sub{font-size:12.5px;margin-top:16px}
   .rule{margin-top:26px;width:272px}
   .tag{margin-top:26px;font-size:21px}
   .desc{margin-top:15px;font-size:15.5px}
-  .btns{margin-top:32px;gap:12px;max-width:384px}
+  .btns{margin-top:26px;gap:12px;max-width:384px}
   .btn{font-size:20px;padding:16px 20px}
   .btn.ghost{font-size:17px}
   .meta{margin-top:30px;font-size:12px}
@@ -83,14 +86,24 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
   /* （2026-10-20）桌面分栏：左边文案+按钮，右边实机画面。
      为什么做：三天日志里 Windows 99 / Mac 52 / iPhone 31 / Android 21，
      桌面占了四分之三，而这页在宽屏上只有中间 390px 一竖条，像是"不是给你玩的"。 */
-  .hero{display:grid;grid-template-columns:minmax(0,1fr) 348px;gap:56px;
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) 348px;gap:68px;
         align-items:start;text-align:left;max-width:1080px;margin:0 auto}
   .hero-txt{grid-column:1;grid-row:1;align-items:flex-start;text-align:left}
-  .hero > .shot{grid-column:2;grid-row:1 / span 2;margin:6px 0 0}
-  .hero > .meta{grid-column:1;grid-row:2}
+  .hero > .shot{grid-column:2;grid-row:1 / span 2;margin:6px 0 0;padding:11px;
+        border-radius:30px;border:1px solid rgba(255,255,255,.10);
+        background:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.015));
+        box-shadow:0 56px 120px -46px #000, 0 0 0 1px rgba(255,150,60,.05)}
+  .hero > .shot img{border-radius:20px;width:100%}
+  .hero > .shot figcaption{text-align:left;padding-left:4px}
+  .hero > .meta{grid-column:1;grid-row:2;justify-content:flex-start;margin-top:20px}
   .hero-txt .rule{margin-left:0}
   .hero-txt .btns{max-width:384px}
   .hero-txt h1 img.t{width:288px}
+  /* 桌面画布大，原来的 15.5px 正文在 1440 里像脚注，整块撑不满左栏 → 显空 */
+  .hero-txt .tag{font-size:25px;letter-spacing:.14em}
+  .hero-txt .desc{font-size:17px;line-height:2.05}
+  .hero-txt .how{font-size:16.5px}
+  .hero-txt .sub{font-size:13px;letter-spacing:.36em}
   /* 标题图左右各带 151/148px 的透明留白（620 宽画布），左对齐时字墨迹会
      往右缩 70px，看着跟 logo 没对在一起 —— 拉回来，让"长明"的笔画左缘
      和 logo 左缘同一条竖线。70 = 151 × (288/620)。 */
@@ -295,7 +308,7 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
     <img src="data:image/webp;base64,__SHOT__" alt="长明：一局里你会读到这样的抉择" width="340" height="735">
     <figcaption>一局里你要读很多段这样的话，然后做决定</figcaption>
   </figure>
-  <div class="meta">单机 · 无内购 · 无广告 · 断网可玩 · 仅 1.7MB · <b style="color:#c9973f">适龄 12+</b></div>
+  <div class="meta"><span>单机 · 断网可玩</span><span>无内购 · 无广告</span><span>仅 1.7 MB</span><span class="age">适龄 12+</span></div>
 </div>
   <div class="qun qun-top" onclick="copyQun()" role="button" tabindex="0">
     <span>玩家交流群</span><b>1125791544</b><span class="cp">复制</span></div>
