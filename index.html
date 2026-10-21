@@ -52,6 +52,7 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
 .how{ margin:14px 0 4px; font-size:15.5px; color:#cfd6e6; letter-spacing:.4px; }
 .how b{ color:#f0c060; font-weight:600; }
 .btn.ghost.sm{ transform:scale(.90); opacity:.84; }
+.btn-hint{margin-top:10px;max-width:334px;font-size:13px;line-height:1.6;color:#9aa8c4;text-align:center}
 /* （2026-10-20）手机上原来是一张裸图贴在半空，现在给个边框，像一张实机照片 */
 .shot{ margin:22px 0 6px; padding:10px; border-radius:26px;
   background:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.015));
@@ -302,10 +303,13 @@ h1 img.t{width:234px;height:auto;filter:drop-shadow(0 8px 30px rgba(255,170,60,.
   <div class="tag">一粒火星 · 从石器到星辰</div>
   <p class="desc">一场大火之后，你是部落仅存的首领。<br>让火种活下去——然后，让它成为星辰。</p>
   <p class="how">你只做三件事：<b>调人干活</b> · <b>按结束年</b> · <b>读报告</b></p>
+  <!-- ★（2026-10-21·数据）七天里首页 50~60 访问/天，点进网页版只有 2~10 人；APK 下载 58 次 / 46 个 IP。
+       两条路都得让人一眼看见，别只留一条还指望人走：安卓走下载（主按钮），电脑/iPhone 走网页（次按钮）。 -->
   <div class="btns">
-    <button class="btn" onclick="play()">开 始 游 戏<span class="en">PLAY IN BROWSER</span></button>
-    <a class="btn ghost sm" href="changming.apk?v=__APKVER__" download>下载安卓版 APK<span class="en">DOWNLOAD · ANDROID</span></a>
+    <a class="btn" href="changming.apk?v=__APKVER__" download>下载安卓版 APK<span class="en">DOWNLOAD · ANDROID</span></a>
+    <button class="btn ghost sm" onclick="play()">直接在网页玩<span class="en">PLAY IN BROWSER</span></button>
   </div>
+  <p class="btn-hint">电脑和 iPhone 装不了 APK<br>点上面那个按钮，直接在网页玩</p>
 </div>
   <figure class="shot">
     <img src="data:image/webp;base64,__SHOT__" alt="长明：一局里你会读到这样的抉择" width="340" height="735">
